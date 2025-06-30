@@ -1,0 +1,16 @@
+
+    2  cd 
+    3  git  clone https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b clang -b lineage-20.0 --depth=1
+    4  git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 -b lineage-19.1 gcc64 --depth=1
+    5  git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 -b lineage-19.1 gcc32 --depth=1
+    6  CLANG=~/clang/bin/
+    7  GCC64=~/gcc64/bin/
+    8  GCC32=~/gcc32/bin/
+    9  export PATH=$CLANG:$GCC64:$GCC32:$PATH
+   10  cd /workspace/android_kernel_xiaomi_sm8250/
+   11  export args="-j$(nproc --all) ARCH=arm64 SUBARCH=arm64 O=~/out CC=clang CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- CLANG_TRIPLE=aarch64-linux-gnu- LLVM=1"
+   12  make ${args} thyme_defconfig
+   13  sudo apt update && sudo apt upgrade -y
+   15  sudo apt install -y bc cpio bison build-essential ccache curl flex g++-multilib gcc-multilib git git-lfs gnupg gperf imagemagick lib32ncurses-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-gtk3-dev libxml2 libxml2-utils lzop maven pngcrush python3 python-is-python3 rsync schedtool squashfs-tools tmux unzip wget zip zlib1g-dev openjdk-17-jdk android-sdk-platform-tools-common protobuf-compiler python3-protobuf lib32readline-dev libdw-dev libelf-dev lz4  xsltproc libncurses5 libtinfo5
+   16  make ${args} thyme_defconfig
+   17  make ${args} 
