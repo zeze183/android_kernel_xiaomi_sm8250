@@ -62,3 +62,11 @@
    62  ./magisk unpack boot.img 
    63  ls -l
    64  history > x.txt
+
+   CONFIG=../out/.config lxc-checkconfig
+
+     make menuconfig
+
+
+
+
