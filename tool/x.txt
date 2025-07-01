@@ -1,0 +1,64 @@
+    1  cd 
+    2  git clone https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r536225 clang --depth=1
+    3  git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 -b lineage-19.1 gcc64 --depth=1
+    4  git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 -b lineage-19.1 gcc32 --depth=1
+    5  CLANG=~/clang/bin/
+    6  GCC64=~/gcc64/bin/
+    7  GCC32=~/gcc32/bin/
+    8  export PATH=$CLANG:$GCC64:$GCC32:$PATH
+    9  cd /workspace/android_kernel_xiaomi_sm8250/
+   10  export args="-j$(nproc --all) ARCH=arm64 SUBARCH=arm64 O=~/out CC=clang CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- CLANG_TRIPLE=aarch64-linux-gnu- LLVM=1"
+   11  make ${args} thyme_defconfig
+   12  sudo apt update && sudo apt upgrade -y
+   13  sudo apt install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git git-lfs gnupg gperf imagemagick lib32ncurses-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.2-dev libxml2 libxml2-utils lzop maven pngcrush python3 python-is-python3 rsync schedtool squashfs-tools tmux unzip wget zip zlib1g-dev openjdk-17-jdk android-sdk-platform-tools-common protobuf-compiler python3-protobuf lib32readline-dev libdw-dev libelf-dev lz4  xsltproc libncurses5 libtinfo5
+   14  sudo apt install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git git-lfs gnupg gperf imagemagick lib32ncurses-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-gtk3-dev libxml2 libxml2-utils lzop maven pngcrush python3 python-is-python3 rsync schedtool squashfs-tools tmux unzip wget zip zlib1g-dev openjdk-17-jdk android-sdk-platform-tools-common protobuf-compiler python3-protobuf lib32readline-dev libdw-dev libelf-dev lz4  xsltproc libncurses5 libtinfo5
+   15  make ${args} thyme_defconfig
+   16  make ${args} 
+   17  cd 
+   18  rm -rf clang
+   19  git clone git clone https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b clang --depth=1
+   20  git  clone https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b clang --depth=1
+   21  git  clone https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b clang -b lineage-20.0 --depth=1
+   22  cd /workspace/android_kernel_xiaomi_sm8250/
+   23  top
+   24  sudo apt install cpio
+   25  make ${args} 
+   26  make ${args} thyme_defconfig
+   27  make ${args} 
+   28  cd 
+   29  git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 -b lineage-19.1 gcc64 --depth=1
+   30  git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 -b lineage-19.1 gcc32 --depth=1
+   31  cd /workspace/android_kernel_xiaomi_sm8250/
+   32  sudo apt update
+   33  sudo apt upgrade
+   34  make mrproper
+   35  cd 
+   36  mkdir tool
+   37  cd tool/
+   38  git clone https://github.com/osm0sis/AnyKernel3.git  
+   39  cd an
+   40  cd AnyKernel3/
+   41  ls
+   42  code anykernel.sh 
+   43  cd
+   44  cd /workspace/android_kernel_xiaomi_sm8250/
+   45  mkdir tool
+   46  c
+   47  cd tool
+   48  chmod 777 libmagiskboot.so 
+   49  wget https://mirrorbits.lineageos.org/full/thyme/20250626/boot.img
+   50  ls
+   51  mv libmagiskboot.so magisk
+   52  magisk
+   53  chmod +x magisk 
+   54  magisk
+   55  ./magisk unpack boot.img 
+   56  ls
+   57  cp ../out/arch/arm64/boot/Image kernel 
+   58  ls
+   59  ./magisk repack boot.img 
+   60  ls
+   61  ls -l
+   62  ./magisk unpack boot.img 
+   63  ls -l
+   64  history > x.txt
